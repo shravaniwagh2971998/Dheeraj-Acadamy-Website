@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <style type="text/css">
+      h1
+      {
+        font-family:serif;
+        color:#1a53ff;
+      }
+    </style>
+</head>
+
+<body>
+
+ <div class="col-md-2">
+<div ng-include="'resources/modules/SideBar/sideBar.html'"></div>
+    </div>
+
+    <div ng-controller="registrationCtrl">
+      <form name="myForm">
+       <div class="col-md-10" style="margin-top: 70px">
+
+    
+
+
+                  <div class="panel panel-default" style="border:none;">
+                      <center><h1><b>Registration Form</b></h1></center>
+
+                            <div class="panel-heading  " style="margin-top: 100px; background-color: #ddff54;border:1px solid green">
+
+
+<!--  <div class="row">
+                                  <a class="btn btn-primary" data-toggle="modal" data-target="#myModal"> <div class="tablebutton glyphicon glyphicon-search"></div> </a>
+
+                              </div>
+
+ -->
+
+
+ <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+<div class="col-md-offset-12 tablebutton glyphicon glyphicon-search" style="margin-left: 95%;" data-toggle="modal" data-target="#myModal">
+  
+</div>.
+
+                            </div>
+                                   <div class="panel-body" style="margin-top: 31px;border:1px solid #e0e0d1">
+                                        <div class="row form-group">
+                                          <div class="col-md-4">
+                                              <label> Name</label>
+                                                <input class="w3-input" type="text" ng-model="registerObj.name" onkeypress="return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122">
+
+                                          </div>
+
+                                          <div class="col-md-4">
+                                              <label>Username</label>
+                                                  <input class="w3-input" type="text"  ng-model="registerObj.username">
+                                          </div>
+
+                                           <div class="col-md-4">
+                                              <label>Password</label>
+                                                  <input class="w3-input" type="password"  ng-model="registerObj.password">
+                                          </div>     
+                          
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-4">
+                                              <label>Confirm Password</label>
+                                                  <input class="w3-input" type="password"  ng-model="registerObj.repeatPassword">
+                                                  <span ng-show="registerObj.password !== registerObj.repeatPassword" style="color: black">Password have to match!</span>
+                                      </div> 
+                                      <!-- <span ng-show="registerObj.password !== registerObj.repeatPassword" style="color: black">Password have to match!</span> -->
+                                    
+                                      <div class="col-md-4">
+                                        <label>Status</label>
+                                      <select type="text" class="form-control" ng-model="registerObj.status" ng-options="item for item in status">
+                                      </select>
+                                        </div>
+                                    </div>
+                                   </div>
+
+
+
+              <div class="panel-footer" style="border:1px solid #e0e0d1">
+
+     <div class="row">
+
+        <div class="col-md-offset-5 col-md-4 ">
+      
+  <button class="w3-button w3-black" ng-show="btnSave" ng-click="initBtn();save(registerObj)">save</button>
+
+  <button class="w3-button w3-black" ng-show="btnUpdate" ng-click="initBtn();update(registerObj)">Update</button>
+ 
+
+
+
+   <button class="w3-button w3-black" ng-click="clear(registerObj)">clear</button>
+
+  <button class="w3-button w3-black" ui-sref="adminDashboard">cancel</button>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+  <center>
+    <div class="modal-dialog modal-lg" style="margin-top: 136px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          
+<div class="container-fluid" style="margin-top: 2%;">
+         <div class="panel panel-primary" style="border: 3px solid black;border-radius: 32px;">
+
+      <div class="panel-body  w3-hover-shadow">
+
+
+<div class="table-responsive">
+<table st-table="registerList1" st-safe-src="registerList" class="table table-hover"> 
+       <thead>  
+               <tr>  
+              <td colspan=9><input st-search="" ng-model="search " class="form-control"  
+                placeholder="global search ..." type="text"/ style="margin-top: 39px;"></td>
+  </tr> 
+
+
+          <th>Sr.no</th>
+      
+          <th>Name</th> 
+          <th>Username</th> 
+          <th>Password</th>
+          <th>Repeat Password</th>
+          <th>Status</th> 
+          <th>Action</th>
+
+              </thead>
+        <tbody>
+  
+            <tr ng-repeat="row in registerList1|filter:search" class=" w3-hover-border-black">
+                <td style="color: black"  class=" w3-hover-shadow">{{$index+1}}</td>
+               <td class=" w3-hover-shadow">{{row.name}}</td>
+               <td class=" w3-hover-shadow">{{row.username}}</td>
+               <td class=" w3-hover-shadow">{{row.password}}</td>               
+               <td class=" w3-hover-shadow">{{row.repeatPassword}}</td>
+               <td class=" w3-hover-shadow">{{row.status}}</td>
+
+              
+          
+          <td>
+            <div class="col-md-6">
+            <button class="btn-hover color-1" data-toggle="tooltip" title="edit"
+            ng-click="editbtn();edit(row.loginId);" >
+            <i class="glyphicon glyphicon-pencil">
+              
+            </i>
+          </button>
+            </div>
+
+            <div class="col-md-6">
+          <button class="btn-hover color-1" data-toggle="tooltip" title="delete"
+            ng-click="delete(row.loginId);" >
+            <i class="glyphicon glyphicon-trash">
+              
+            </i>
+          </button>
+        </div>
+        </td>
+
+              </tr>
+            </tbody>
+
+        </table>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </center>
+  </div>
+
+
+
+     
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+
+</div>
+</form>
+    </div>
+</body>
+
+</html>

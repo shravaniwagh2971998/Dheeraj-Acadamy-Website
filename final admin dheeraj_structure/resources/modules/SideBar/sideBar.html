@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style type="text/css">
+/*body,html{
+height: 100%;
+}
+a{
+font-family: 'Lexend Deca', sans-serif;
+}
+
+@media screen and (max-width: 600px) {
+#sidebar{
+width:200px !important; 
+margin-bottom:20px !important;
+}
+}
+
+.setColor
+{
+    color:#26e9bd;
+}*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    position: fixed;
+    left: 250px;
+    z-index: 1000;
+    overflow-y: auto;
+    margin-left: -250px;
+    width: 0;
+    height: 100%;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    padding: 15px;
+    width: 100%;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #999999;
+    text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    background: none;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div ng-controller="sideBar">
+
+
+<div class="container-fluid">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#menu-toggle" id="menu-toggle"><span class="fa fa-list" aria-hidden="true"><b style="color: white;margin-left: 8px;">Dheeraj Acadamy</b></span></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li><a href="#"><span class="fa fa-home" aria-hidden="true"></span> Home</a></li>
+				<li><a href="#"><span class="fa fa-envelope" aria-hidden="true"></span> Messages </a></li>
+             	<li><a href="#"><span class="fa fa-question-circle" aria-hidden="true"></span> Help</a></li> -->
+                <li><a ui-sref="login"><span class="fa fa-power-off" aria-hidden="true"></span> Log Out</a></li>
+            </ul>
+            <!-- <form class="navbar-form navbar-right" action="#" method="GET">
+           		<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search..." id="query" name="search" value="">
+                  	<div class="input-group-btn">
+                    	<button type="submit" class="btn btn-success"><span class="fa fa-search"></span></button>
+                  	</div>
+				</div>
+            </form> -->
+        </div>
+    </div>
+</nav>
+
+<div id="wrapper" class="toggled">
+    <div class="container-fluid">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              	<li class="sidebar-brand">
+                    <br>
+                </li>
+                <li class="sidebar-brand">
+                    <a href="#" class="navbar-brand">
+                        <span class="fa fa-user" aria-hidden="true" style="margin-left: -23px;"></span> <label style="color: blue;font-size: 15px">Admin Dashboard</label>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="registration"><span class="fa fa-pencil" aria-hidden="true"></span> Registration</a>
+                </li>
+                <li>
+                    <a ui-sref="profile"><span class="fa fa-users" aria-hidden="true"></span> Add Profile</a>
+                </li>
+                 <li>
+                    <a ui-sref="contactDetails"><span class="fa fa-address-book-o" aria-hidden="true"></span> Contact Details</a>
+                </li>   
+                <li>
+                    <a ui-sref="address"><span class="fa fa-address-book-o" aria-hidden="true"></span> Add Address</a>
+                </li>  
+                <li>
+                    <a ui-sref="activeImages"><span class="fa fa-file-image-o" aria-hidden="true"></span>Add Images to HomePage</a>
+                </li>  
+                <li>
+                    <a ui-sref="galleryMaster"><span class="fa fa-picture-o" aria-hidden="true"></span> Add Gallery</a>
+                </li>  
+                <li>
+                    <a ui-sref="contentMaster"><span class="fa fa-pencil-square" aria-hidden="true"></span> Add About us Content</a>
+                </li>           
+                <!-- <li>
+                    <span class="fa fa-search" aria-hidden="true"></span><font color="#337AB7"> STATISTICS</font>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-tasks" aria-hidden="true"></span> Reports</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-stats" aria-hidden="true"></span> Statistic</a>
+                </li>
+                <li>
+                    <span class="fa fa-search" aria-hidden="true"></span><font color="#337AB7"> ADMINISTRATION</font>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-user" aria-hidden="true"></span> Users</a>
+                </li>
+              	<li>
+                    <a href="#"><span class="fa fa-envelope" aria-hidden="true"></span> Messages</a>
+                </li> -->
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row" style="margin-top: 100px">
+                    <div class="col-lg-12">
+                       <!-- <center><b><font style="color: red;font-size: 30px">DHEERAJ ACADAMY</font></b></center>
+                       <img src="resources/assets/images/1.jpg" height="50%" width="100%">
+ -->                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-lg-12">
+						Your Content
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+</div>
+<!-- /#wrapper -->
+
+
+</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

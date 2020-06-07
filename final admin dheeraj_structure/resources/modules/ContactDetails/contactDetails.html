@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+
+</head>
+
+<body>
+    <div class="col-md-2">
+<div ng-include="'resources/modules/SideBar/sideBar.html'"></div>
+    </div>
+
+    
+    <div ng-controller="contactDetailsCntrl">
+        <div class="col-md-10">
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <!-- <div class="breadcumb-area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg);">
+        <div class="bradcumbContent">
+            <h2 style="margin-top: -2px;"  class=" w3-hover-shadow">Contact Information</h2>
+        </div>
+    </div>
+    -->
+
+
+
+
+<div class="container-fluid" style="margin-top: 20%;">
+         <div class="panel panel-primary" style="border: 2px solid black;border-radius: 32px;">
+
+      <div class="panel-body" >
+
+
+<div class="table-responsive">
+<table st-table="mylist1" st-safe-src="mylist" class="table table-hover"> 
+       <thead>  
+               <tr>  
+              <td colspan=9><input st-search="" ng-model="search " class="form-control"  
+                placeholder="global search ..." type="text"/ style="margin-top: 39px;"></td>
+  </tr> 
+
+
+          <th>Sr.no</th>
+      
+          <th>Email</th> 
+          <th>Message</th> 
+          <th>Date</th> 
+          <th>Contact No.</th> 
+          <th>Action</th>
+
+              </thead>
+        <tbody>
+  
+            <tr ng-repeat="row in mylist1|filter:search" class=" w3-hover-border-black">
+                <td style="color: black"  class=" w3-hover-shadow">{{$index+1}}</td>
+               <td class=" w3-hover-shadow">{{row.email}}</td>
+               <td class=" w3-hover-shadow">{{row.messasge}}</td>
+               <td class=" w3-hover-shadow">{{row.date | date:'MMMM dd, yyyy' }}
+</td>
+               <td class=" w3-hover-shadow">{{row.contact}}</td>
+              <td>
+                <div class="col-md-6">
+                <button class="btn-hover color-1" data-toggle="tooltip" title="delete"
+                    ng-click="delete(row.wenEnquiryId);" >
+                  <i class="glyphicon glyphicon-trash">
+              
+                  </i>
+                </button>
+                </div>
+              </td>
+       <!--    
+          <td>
+            <button class="btn-hover color-1" data-toggle="tooltip" title="edit"
+            ng-click="editbtn();edit(row.companyId);" >
+            <i class="glyphicon glyphicon-pencil">
+              
+            </i>
+          </button>
+
+          <button class="btn-hover color-1" data-toggle="tooltip" title="edit"
+            ng-click="delete(row.companyId);" >
+            <i class="glyphicon glyphicon-shopping-cart">
+              
+            </i>
+          </button>
+        </td> -->
+
+              </tr>
+            </tbody>
+
+        </table>
+      </div>
+      </div>
+  </div>
+</div>
+
+
+
+     
+    <!-- ##### Footer Area Start ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+
+</div>
+</div>
+</body>
+
+</html>
